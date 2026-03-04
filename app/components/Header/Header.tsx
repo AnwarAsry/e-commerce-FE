@@ -4,7 +4,7 @@ import { FaRegUser } from "react-icons/fa";
 import { BsCart4, BsHeart } from "react-icons/bs";
 import { Link } from "react-router";
 import { AmountLabel } from "../AmountLabel";
-import { HeaderAction } from "../HeaderAction";
+import { HeaderAction } from "./HeaderAction";
 
 export const Header = () => {
     return (
