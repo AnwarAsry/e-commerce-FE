@@ -53,7 +53,7 @@ export const Header = () => {
                         />
                     </Link>
 
-                    <div className="max-w-md flex-1 hidden sm:block">
+                    <div className="flex-1 hidden sm:block">
                         <SearchInput />
                     </div>
 
