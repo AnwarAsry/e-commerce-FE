@@ -9,7 +9,7 @@ interface FooterLinkProps {
 
 export const FooterLink = ({ link }: FooterLinkProps) => {
     return (
-        <li key={link.label}>
+        <li>
             <Link
                 to={link.href}
                 className="text-sm text-gray-600 hover:text-blue-500 transition-colors"
