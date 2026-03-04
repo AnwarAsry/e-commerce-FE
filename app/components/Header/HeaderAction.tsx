@@ -14,7 +14,6 @@ export const HeaderAction = ({ children, linkHref, text }: HeaderActionProps) =>
             aria-label={text}
         >
             {children}
-            <span className="sr-only md:not-sr-only">{text}</span>
         </Link>
     )
 }
