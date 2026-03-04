@@ -1,7 +1,8 @@
 export type Category =
     | "ELECTRONICS"
     | "CLOTHING"
-    | "HOME_AND_GARDEN"
+    | "HOME"
+    | "GARDEN"
     | "BOOKS"
     | "SPORTS"
     | "TOYS"
