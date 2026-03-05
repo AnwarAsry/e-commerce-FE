@@ -16,7 +16,8 @@ import { NavLink } from "./NavLink";
 const NAV_LINKS = [
     { label: "Electronics", href: "/electronics" },
     { label: "Books", href: "/books" },
-    { label: "Home & Garden", href: "/home-garden" },
+    { label: "Home & Living", href: "/home-living" },
+    { label: "Garden", href: "/garden" },
     { label: "Beauty", href: "/beauty" },
     { label: "Sports", href: "/sports" },
     { label: "Clothing", href: "/clothing" },
