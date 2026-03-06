@@ -65,8 +65,8 @@ export default function ProductsLayout() {
                         <FilterHeading title="Sort By" />
                         <ul className="flex flex-col gap-1">
                             {
-                                SORT_OPTIONS.map((opt) => (
-                                    <SortValue opt={opt} currentSort={currentSort} handleSort={handleSort} />
+                                SORT_OPTIONS.map((opt, i) => (
+                                    <SortValue key={i} opt={opt} currentSort={currentSort} handleSort={handleSort} />
                                 ))
                             }
                         </ul>

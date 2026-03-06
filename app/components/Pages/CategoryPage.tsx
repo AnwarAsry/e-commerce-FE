@@ -31,15 +31,17 @@ export const CategoryPage = ({ category }: CategoryPageProps) => {
 
     return (
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 xl:grid-cols-4">
-            <p className="col-span-full text-sm text-gray-400">
-                Showing <span className="font-medium text-gray-700">{category}</span>
-                {" "}— sort: {sort}{inStock ? ", in stock only" : ""}
-            </p>
-
             {
                 products.map(product => (
                     <Product key={product.id} product={product} />
                 ))
+            }
+            {
+                products.length === 0 && (
+                    <div className="col-span-full text-center text-gray-500">
+                        No products found.
+                    </div>
+                )
             }
         </div>
     );
