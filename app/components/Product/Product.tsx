@@ -7,6 +7,9 @@ import imageplaceholder from "@public/placeholder.jpg";
 import { BsHeart, BsHeartFill, BsCart4 } from "react-icons/bs";
 import { Badge } from "./Badge";
 import { PrimaryButton } from "../Buttons/PrimaryButton";
+import { calcDiscount } from "~/lib/ProductMethods";
+import { Link } from "react-router";
+import { WishButton } from "../Buttons/WishButton";
 
 interface ProductProps {
     product: IProduct
@@ -16,9 +19,7 @@ export const Product = ({ product }: ProductProps) => {
     const [wished, setWished] = useState(false);
     const [added, setAdded] = useState(false);
 
-    const discount = product.compareAtPrice
-        ? Math.round(((product.compareAtPrice - product.price) / product.compareAtPrice) * 100)
-        : null;
+    const discount = product.compareAtPrice ? calcDiscount(product.compareAtPrice, product.price) : null;
 
     const handleAddToCart = () => {
         if (!product.inStock) return;
@@ -27,7 +28,7 @@ export const Product = ({ product }: ProductProps) => {
     };
 
     return (
-        <div className="productCard group">
+        <Link to={`/product/${product.category}/${product.id}`} className="productCard group">
             <div className="relative overflow-hidden">
                 <img
                     src={product.thumbnailUrl || imageplaceholder}
@@ -47,18 +48,11 @@ export const Product = ({ product }: ProductProps) => {
                     }
                 </div>
 
-                <button
-                    onClick={() => setWished((w) => !w)}
-                    aria-label="Toggle wishlist"
-                    className={`size-9 absolute top-3 right-3 flex items-center justify-center rounded-full shadow-sm hover:cursor-pointer transition-all duration-200 active:scale-90
-                        ${wished ? "bg-rose-500 hover:bg-rose-600" : "bg-white/90 hover:bg-white"}
-                    `}
-                >
-                    {wished
-                        ? <BsHeartFill className="size-3.5 text-white" />
-                        : <BsHeart className="size-3.5 text-gray-500" />
-                    }
-                </button>
+                <WishButton
+                    className={"size-9! absolute top-3 right-3"}
+                    onToggle={() => setWished((w) => !w)}
+                    wished={wished}
+                />
             </div>
             <div className="p-4 flex flex-col flex-1 gap-3">
                 <span className="text-[0.65rem] uppercase tracking-widest font-medium text-gray-400">
@@ -85,16 +79,8 @@ export const Product = ({ product }: ProductProps) => {
                             </span>
                         )}
                     </div>
-
-                    <PrimaryButton
-                        text={added ? "Added!" : product.inStock ? "Add" : "—"}
-                        disabled={!product.inStock}
-                        icon={<BsCart4 className="w-3.5 h-3.5" />}
-                        onClick={handleAddToCart}
-                        className={`${added ? "bg-green-500! text-white scale-95 hover:bg-none" : ""}`}
-                    />
                 </div>
             </div>
-        </div>
+        </Link>
     );
 };
