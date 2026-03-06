@@ -11,7 +11,7 @@ export const PrimaryButton = ({ text, disabled, onClick, icon, className }: Prim
         <button
             onClick={onClick}
             disabled={disabled}
-            className={`px-3 py-2 flex items-center gap-1.5 rounded-xl text-xs font-semibold transition-all duration-200
+            className={`px-3 py-2 flex items-center justify-center gap-1.5 rounded-xl text-xs font-semibold transition-all duration-200
                 ${disabled ? "bg-gray-100 text-gray-400 cursor-not-allowed" : "bg-gray-950 text-white hover:cursor-pointer hover:bg-gray-700 active:scale-95"}
                 ${className}
             `}
