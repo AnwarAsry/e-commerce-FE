@@ -6,6 +6,7 @@ import { Stars } from "./Stars";
 import imageplaceholder from "@public/placeholder.jpg";
 import { BsHeart, BsHeartFill, BsCart4 } from "react-icons/bs";
 import { Badge } from "./Badge";
+import { PrimaryButton } from "../Buttons/PrimaryButton";
 
 interface ProductProps {
     product: IProduct
@@ -85,19 +86,13 @@ export const Product = ({ product }: ProductProps) => {
                         )}
                     </div>
 
-                    <button
-                        onClick={handleAddToCart}
+                    <PrimaryButton
+                        text={added ? "Added!" : product.inStock ? "Add" : "—"}
                         disabled={!product.inStock}
-                        className={`px-3 py-2 flex items-center gap-1.5 rounded-xl text-xs font-semibold transition-all duration-200
-                            ${product.inStock ? added ? "bg-green-500 text-white scale-95"
-                                : "bg-gray-950 text-white hover:cursor-pointer hover:bg-gray-700 active:scale-95"
-                                : "bg-gray-100 text-gray-400 cursor-not-allowed"
-                            }
-                        `}
-                    >
-                        <BsCart4 className="w-3.5 h-3.5" />
-                        {added ? "Added!" : product.inStock ? "Add" : "—"}
-                    </button>
+                        icon={<BsCart4 className="w-3.5 h-3.5" />}
+                        onClick={handleAddToCart}
+                        className={`${added ? "bg-green-500! text-white scale-95 hover:bg-none" : ""}`}
+                    />
                 </div>
             </div>
         </div>
