@@ -28,10 +28,6 @@ export const Header = () => {
 
     return (
         <header className="sticky top-0 z-50 border-b border-gray-100 bg-white/90 backdrop-blur-md">
-            <div className="py-2 text-xs text-center font-light tracking-widest uppercase text-white bg-gray-950">
-                Free shipping on orders over $50
-            </div>
-
             <div className="w-full max-w-[1170px] mx-auto px-6">
                 <div className="h-16 flex items-center gap-8">
                     <button
