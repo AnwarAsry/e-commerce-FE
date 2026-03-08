@@ -6,4 +6,5 @@ export type Category =
     | "BOOKS"
     | "SPORTS"
     | "BEAUTY"
+    | "FEATURED"
     | "OTHER";
