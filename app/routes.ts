@@ -13,6 +13,7 @@ export default [
         route("books", "routes/Category/books.tsx"),
         route("sports", "routes/Category/sports.tsx"),
         route("beauty", "routes/Category/beauty.tsx"),
+        route("featured", "routes/Category/featured.tsx"),
 
         // Search results page
         route("search", "routes/search.tsx"),
