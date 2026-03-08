@@ -1,4 +1,4 @@
-const BASE_URL = `some/api`;
+const BASE_URL = process.env.BE_URL;
 
 // Get function
 export const get = async <T>(url: string) => {
