@@ -15,9 +15,9 @@ import { Badge } from "~/components/Product/Badge";
 import { ImgBox } from "~/components/Buttons/ImgBox";
 
 export async function loader({ params }: LoaderFunctionArgs): Promise<IProduct> {
-    const { id } = params;
+    const { id, category } = params;
 
-    const response = await getProduct(id!);
+    const response = await getProduct(id!, category!);
 
     if (!response.success || !response.data) {
         throw new Response("Product not found", { status: 404 });
