@@ -16,8 +16,18 @@ export const getCategoryProducts = async (category: string, sort: string, inStoc
     }
 };
 
-export const getProduct = async (id: string): Promise<ServerActionResponse<IProduct | null>> => {
-    return { data: null, message: "Not implemented", success: true };
+export const getProduct = async (id: string, category: string): Promise<ServerActionResponse<IProduct | null>> => {
+    try {
+        const response = await get<ServerActionResponse<IProduct>>(`/product/${category}/${id}`);
+
+        if (!response.success) {
+            return { data: null, message: "Server Error", success: false }
+        }
+
+        return response;
+    } catch (error) {
+        return { data: null, message: JSON.stringify(error), success: false };
+    }
 }
 
 export const getFeaturedProducts = async (): Promise<ServerActionResponse<IProduct[] | null>> => {
