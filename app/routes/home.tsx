@@ -1,5 +1,6 @@
 import { DisclaimerModal } from "~/components/DisclaimerModal";
 import type { Route } from "./+types/home";
+import { CategoryGrid } from "~/components/CategoryGrid";
 
 export function meta({ }: Route.MetaArgs) {
 	return [
@@ -11,8 +12,6 @@ export function meta({ }: Route.MetaArgs) {
 export default function Home() {
 	return <>
 		<DisclaimerModal />
-		<main>
-			Content
-		</main>
+		<CategoryGrid />
 	</>;
 }
