@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLoaderData, useParams } from "react-router";
+import { isRouteErrorResponse, Link, useLoaderData, useParams, useRouteError } from "react-router";
 import type { LoaderFunctionArgs } from "react-router";
 import { BsCart4 } from "react-icons/bs";
 
@@ -24,6 +24,49 @@ export async function loader({ params }: LoaderFunctionArgs): Promise<IProduct> 
     }
 
     return response.data;
+}
+
+export function ErrorBoundary() {
+    const error = useRouteError();
+    const is404 = isRouteErrorResponse(error) && error.status === 404;
+
+    return (
+        <div className="w-full max-w-[1170px] mx-auto px-6 py-24 flex flex-col items-center text-center gap-5">
+
+            <span className="text-8xl font-black text-gray-400 leading-none select-none">
+                {is404 ? "404" : "500"}
+            </span>
+
+            <div className="flex flex-col gap-2">
+                <h1 className="text-xl font-semibold text-gray-950">
+                    {is404 ? "Product not found" : "Something went wrong"}
+                </h1>
+                <p className="max-w-xs text-sm text-gray-400 leading-relaxed">
+                    {is404
+                        ? "This product may have been removed or the link is incorrect."
+                        : "We couldn't load this product. Please try again in a moment."
+                    }
+                </p>
+            </div>
+
+            <div className="mt-2 flex items-center gap-3">
+                {!is404 && (
+                    <button
+                        onClick={() => window.location.reload()}
+                        className="px-5 py-2.5 border rounded-xl border-gray-200 text-sm font-medium text-gray-600 hover:bg-gray-50 transition-colors"
+                    >
+                        Try again
+                    </button>
+                )}
+                <Link
+                    to="/"
+                    className="px-5 py-2.5 rounded-xl text-sm font-medium text-white bg-gray-950 hover:bg-gray-700 transition-colors"
+                >
+                    Back to home
+                </Link>
+            </div>
+        </div>
+    );
 }
 
 export default function ProductDetail() {
